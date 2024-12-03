@@ -48,8 +48,8 @@ type Day3Solution1 struct {}
 
 func (Day3Solution1) Solve(path string) {
 	file := util.ReadFile(path)
-	r := reader { &day03.Reader{ file, 0 } }
-	
+	r := reader { &day03.Reader{ Source: file, Index: 0 } }
+
 	s := r.read()
 
 	fmt.Println(s)
