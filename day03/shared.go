@@ -11,6 +11,10 @@ type Reader struct {
 	Index int
 }
 
+func (t *Reader) IsAtEnd() bool {
+	return !(t.Index < len(t.Source))
+}
+
 func (t *Reader) GetCurrent() rune {
 	return rune(t.Source[t.Index])
 }

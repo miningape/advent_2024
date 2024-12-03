@@ -12,7 +12,7 @@ type reader struct {
 }
 
 func (r *reader) dont() {
-	for r.Index < len(r.Source) {
+	for !r.IsAtEnd() {
 		if r.Scan("do()") {
 			break
 		}
@@ -22,7 +22,7 @@ func (r *reader) dont() {
 func (r *reader) read() int {
 	sum := 0
 
-	for r.Index < len(r.Source) {
+	for !r.IsAtEnd() {
 		if r.Speculate_scan("don't()") {
 			r.dont()
 		}
