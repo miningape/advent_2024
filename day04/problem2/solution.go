@@ -22,18 +22,23 @@ func findXmas(lines []string) int {
 	
 	for y, line := range lines {
 		for x, ch := range line {
-			if ch == 'A' {
-				current := util.Vector{ X: x, Y: y }
+			if ch != 'A' {
+				continue
+			}
 
-				for _, direction := range unitVectors {
-					start := current.Add(direction)
-					if day04.DirectionMatches("MAS", lines, start, direction.Opposite()) {
-						next := start.Rotate90(current)
-						if (day04.DirectionMatches("MAS", lines, next, direction.RotateOrigin90().Opposite())) {
-							count++
-						}
-					}
-				}		
+			current := util.Vector{ X: x, Y: y }
+			for _, direction := range unitVectors {
+				start := current.Add(direction)
+				if !day04.DirectionMatches("MAS", lines, start, direction.Opposite()) {
+					continue
+				}
+
+				next := start.Rotate90(current)
+				if !day04.DirectionMatches("MAS", lines, next, direction.RotateOrigin90().Opposite()) {
+					continue
+				}
+
+				count++
 			}
 		}
 	}
