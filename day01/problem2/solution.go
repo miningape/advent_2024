@@ -18,7 +18,7 @@ func countAppearances(slice []int) map[int]int {
 	return m
 }
 
-type Day1Solution2 struct {}
+type Day1Solution2 struct{}
 
 func (Day1Solution2) Solve(path string) {
 	file := util.ReadFile(path)

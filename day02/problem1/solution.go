@@ -26,7 +26,7 @@ func testDiff(diff []int) bool {
 	return true
 }
 
-type Day2Solution1 struct {}
+type Day2Solution1 struct{}
 
 func (Day2Solution1) Solve(path string) {
 	file := util.ReadFile(path)

@@ -3,7 +3,7 @@ package util
 import "os"
 
 type Solution interface {
-	Solve(string);
+	Solve(string)
 }
 
 func ReadFile(path string) string {

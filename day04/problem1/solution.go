@@ -7,7 +7,6 @@ import (
 	"strings"
 )
 
-
 func allUnitVectors() []util.Vector {
 	vectors := make([]util.Vector, 0, 8)
 
@@ -17,22 +16,21 @@ func allUnitVectors() []util.Vector {
 				continue
 			}
 
-			vectors = append(vectors, util.Vector{ X: x, Y: y })
+			vectors = append(vectors, util.Vector{X: x, Y: y})
 		}
 	}
 
 	return vectors
 }
 
-
 func findXmas(lines []string) int {
 	unitVectors := allUnitVectors()
 	count := 0
-	
+
 	for y, line := range lines {
 		for x := range line {
 			for _, direction := range unitVectors {
-				if day04.DirectionMatches("XMAS", lines, util.Vector{ X: x, Y: y }, direction) {
+				if day04.DirectionMatches("XMAS", lines, util.Vector{X: x, Y: y}, direction) {
 					count++
 				}
 			}
@@ -42,7 +40,7 @@ func findXmas(lines []string) int {
 	return count
 }
 
-type Day4Solution1 struct {}
+type Day4Solution1 struct{}
 
 func (Day4Solution1) Solve(path string) {
 	file := util.ReadFile(path)

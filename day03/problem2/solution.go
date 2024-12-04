@@ -6,7 +6,6 @@ import (
 	"fmt"
 )
 
-
 type reader struct {
 	*day03.Reader
 }
@@ -51,16 +50,15 @@ func (r *reader) read() int {
 
 		sum += left * right
 	}
-	
+
 	return sum
 }
 
-
-type Day3Solution2 struct {}
+type Day3Solution2 struct{}
 
 func (Day3Solution2) Solve(path string) {
 	file := util.ReadFile(path)
-	r := reader { &day03.Reader{ Source: file, Index: 0 } }
+	r := reader{&day03.Reader{Source: file, Index: 0}}
 
 	s := r.read()
 

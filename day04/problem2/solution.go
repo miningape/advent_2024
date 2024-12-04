@@ -8,25 +8,25 @@ import (
 )
 
 func allCornerVectors() []util.Vector {
-	return []util.Vector {
-		{ X:  1, Y:  1 },
-		{ X:  1, Y: -1 },
-		{ X: -1, Y: -1},
-		{ X: -1, Y:  1},
+	return []util.Vector{
+		{X: 1, Y: 1},
+		{X: 1, Y: -1},
+		{X: -1, Y: -1},
+		{X: -1, Y: 1},
 	}
 }
 
 func findXmas(lines []string) int {
 	unitVectors := allCornerVectors()
 	count := 0
-	
+
 	for y, line := range lines {
 		for x, ch := range line {
 			if ch != 'A' {
 				continue
 			}
 
-			current := util.Vector{ X: x, Y: y }
+			current := util.Vector{X: x, Y: y}
 			for _, direction := range unitVectors {
 				start := current.Add(direction)
 				if !day04.DirectionMatches("MAS", lines, start, direction.Opposite()) {
@@ -46,7 +46,7 @@ func findXmas(lines []string) int {
 	return count
 }
 
-type Day4Solution2 struct {}
+type Day4Solution2 struct{}
 
 func (Day4Solution2) Solve(path string) {
 	file := util.ReadFile(path)

@@ -34,7 +34,7 @@ func main() {
 		panic("Not enough arguments - supply day and problem numbers")
 	}
 
-	days := map[string]map[string]util.Solution {
+	days := map[string]map[string]util.Solution{
 		"1": {
 			"1": day1_problem1.Day1Solution1{},
 			"2": day1_problem2.Day1Solution2{},

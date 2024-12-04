@@ -8,7 +8,7 @@ import (
 
 type Reader struct {
 	Source string
-	Index int
+	Index  int
 }
 
 func (t *Reader) IsAtEnd() bool {
@@ -28,7 +28,7 @@ func (t *Reader) Advance() rune {
 func (t *Reader) Scan(s string) bool {
 	for _, r := range s {
 		c := t.Advance()
-		
+
 		if c != r {
 			return false
 		}
@@ -61,7 +61,7 @@ func (t *Reader) Scan_int() (int, bool) {
 
 func (t *Reader) Speculate_scan(s string) bool {
 	if len(s) == 0 {
-		panic("Cannot speculate_scan with an empty string")	
+		panic("Cannot speculate_scan with an empty string")
 	}
 
 	first := rune(s[0])

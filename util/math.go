@@ -1,7 +1,7 @@
 package util
 
 func Abs(num int) int {
-	if (num < 0) {
+	if num < 0 {
 		return -num
 	}
 

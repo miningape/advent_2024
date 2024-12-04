@@ -8,7 +8,7 @@ import (
 )
 
 func remove[T interface{}](index int, list []T) []T {
-	next := make([]T, 0, len(list) - 1)
+	next := make([]T, 0, len(list)-1)
 
 	for i, e := range list {
 		if i != index {
@@ -25,9 +25,9 @@ func mostCommonSignOnDiff(diff []int) bool {
 	for _, e := range diff {
 		if e < 0 {
 			count--
-		} 
-		
-		if e > 0{
+		}
+
+		if e > 0 {
 			count++
 		}
 	}
@@ -35,7 +35,7 @@ func mostCommonSignOnDiff(diff []int) bool {
 	return count >= 0
 }
 
-func n (num int) (int, int) {
+func n(num int) (int, int) {
 	if num == 0 {
 		return 1, 2
 	}
@@ -63,7 +63,7 @@ func testDiff(diff []int, levels []int) (bool, int) {
 		if !passes(item, isPositive) {
 			left, right := n(i)
 			testDiffItem := levels[left] - levels[right]
-			if passes(testDiffItem, isPositive) && ((i == len(diff) - 1) || passes(diff[i + 1], isPositive)) {
+			if passes(testDiffItem, isPositive) && ((i == len(diff)-1) || passes(diff[i+1], isPositive)) {
 				return false, i
 			}
 
@@ -76,7 +76,7 @@ func testDiff(diff []int, levels []int) (bool, int) {
 
 func testLevels_(levels []int, hasRemoved bool) bool {
 	diff := day02.DiffLevels(levels)
-	result, index := testDiff(diff, levels) 
+	result, index := testDiff(diff, levels)
 	if result {
 		return true
 	}
@@ -93,7 +93,7 @@ func testLevels(levels []int) bool {
 	return testLevels_(levels, false)
 }
 
-type Day2Solution2 struct {}
+type Day2Solution2 struct{}
 
 func (Day2Solution2) Solve(path string) {
 	file := util.ReadFile(path)
@@ -102,7 +102,7 @@ func (Day2Solution2) Solve(path string) {
 	sum := 0
 	for _, report := range reports {
 		levels := day02.ParseReport(report)
-		
+
 		if testLevels(levels) {
 			sum++
 		}

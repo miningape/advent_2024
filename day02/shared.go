@@ -22,14 +22,14 @@ func ParseReport(report string) []int {
 }
 
 func DiffLevels(levels []int) []int {
-	diff := make([]int, 0, len(levels) - 1)
+	diff := make([]int, 0, len(levels)-1)
 
 	previous := 0
 	for i, level := range levels {
 		if i != 0 {
-			diff = append(diff, previous - level)	
+			diff = append(diff, previous-level)
 		}
-		
+
 		previous = level
 	}
 

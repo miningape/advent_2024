@@ -8,13 +8,13 @@ import (
 	"strings"
 )
 
-func ascending(l []int) (func(i, j int) bool) {
+func ascending(l []int) func(i, j int) bool {
 	return (func(i, j int) bool {
 		return l[i] < l[j]
 	})
 }
 
-type Day1Solution1 struct {}
+type Day1Solution1 struct{}
 
 func (Day1Solution1) Solve(path string) {
 	file := util.ReadFile(path)

@@ -6,8 +6,8 @@ import (
 )
 
 func SplitLines(lines []string) ([]int, []int) {
-	leftl := []int {}
-	rightl := []int {}
+	leftl := []int{}
+	rightl := []int{}
 
 	for _, line := range lines {
 		items := strings.Split(line, "   ")
