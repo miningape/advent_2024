@@ -23,7 +23,7 @@ func findXmas(lines []string) int {
 	for y, line := range lines {
 		for x, ch := range line {
 			if ch == 'A' {
-				current := util.Vector{ X: x, Y: y}
+				current := util.Vector{ X: x, Y: y }
 
 				for _, direction := range unitVectors {
 					start := current.Add(direction)
