@@ -1,99 +1,30 @@
 package day5_problem1
 
 import (
+	"advent2024/day05"
 	"advent2024/util"
 	"fmt"
-	"strconv"
-	"strings"
 )
 
-func getOrderingRules(file string) map[int]util.Set[int] {
-	rules := make(map[int]util.Set[int])
-
-	for _, rule := range strings.Split(file, "\n") {
-		r := strings.Split(rule, "|")
-		before, err := strconv.Atoi(r[0])
-		if err != nil {
-			panic(err)
-		}
-
-		after, err := strconv.Atoi(r[1])
-		if err != nil {
-			panic(err)
-		}
-
-		_, found := rules[before]
-		if !found {
-			rules[before] = util.SetOf[int]()
-		}
-		
-		rules[before].Add(after)
-	}
-
-	return rules
-}
-
-func getPageUpdates(file string) [][]int {
-	lines := strings.Split(file, "\n")
-	updates := make([][]int, 0, len(lines))
-
-	for _, line := range lines {
-		page_strings := strings.Split(line, ",")
-		pages := make([]int, 0, len(page_strings))
-
-		for _, s := range page_strings {
-			page, err := strconv.Atoi(s)
-			if err != nil {
-				panic(err)
-			}
-
-			pages = append(pages, page)
-		}
-
-		updates = append(updates, pages)
-	}
-
-	return updates
-}
-
-func isOk(pages []int, rules map[int]util.Set[int]) bool {
-	seen := util.SetOf[int]()
-
-	for _, page := range pages {
-		mustBeBefore := rules[page]
-		if len(mustBeBefore.Intersection(seen)) > 0 {
-			return false
-		}
-
-		seen.Add(page)
-	}
+func calculateMiddleOfCorrectlyOrderedUpdates(rules map[int]util.Set[int], updates [][]int) int {
+	sum := 0
 	
-	return true
-}
-
-func findMiddle(l []int) int {
-	if len(l) % 2 == 0 {
-		panic("Cannot find the middle of an even list")
+	for _, update := range updates {
+		if day05.IsCorrectlyOrdered(update, rules) {
+			sum += day05.FindMiddle(update)
+		}
 	}
 
-	middle := (len(l) - 1) / 2
-	return l[middle]
+	return sum
 }
 
 type Day5Solution1 struct{}
 
 func (Day5Solution1) Solve(path string) {
- 	file := strings.Split(util.ReadFile(path), "\n\n")
+ 	file := util.ReadFile(path)
+	rules, updates := day05.ParseInput(file)
 
-	rules := getOrderingRules(file[0])
-	updates := getPageUpdates(file[1])
-
-	sum := 0
-	for _, update := range updates {
-		if isOk(update, rules) {
-			sum += findMiddle(update)
-		}
-	}
-
+	sum := calculateMiddleOfCorrectlyOrderedUpdates(rules, updates)
+	
 	fmt.Println(sum)
 }
