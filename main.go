@@ -9,6 +9,7 @@ import (
 	day3_problem2 "advent2024/day03/problem2"
 	day4_problem1 "advent2024/day04/problem1"
 	day4_problem2 "advent2024/day04/problem2"
+	day5_problem1 "advent2024/day05/problem1"
 	"advent2024/util"
 	"os"
 )
@@ -50,6 +51,9 @@ func main() {
 		"4": {
 			"1": day4_problem1.Day4Solution1{},
 			"2": day4_problem2.Day4Solution2{},
+		},
+		"5": {
+			"1": day5_problem1.Day5Solution1{},
 		},
 	}
 
