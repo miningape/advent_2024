@@ -6,7 +6,6 @@ import (
 	"strings"
 )
 
-
 func getOrderingRules(file string) map[int]util.Set[int] {
 	rules := make(map[int]util.Set[int])
 
@@ -26,7 +25,7 @@ func getOrderingRules(file string) map[int]util.Set[int] {
 		if !found {
 			rules[before] = util.SetOf[int]()
 		}
-		
+
 		rules[before].Add(after)
 	}
 
@@ -66,7 +65,7 @@ func ParseInput(file string) (map[int]util.Set[int], [][]int) {
 }
 
 func FindMiddle(l []int) int {
-	if len(l) % 2 == 0 {
+	if len(l)%2 == 0 {
 		panic("Cannot find the middle of an even list")
 	}
 
@@ -85,6 +84,6 @@ func IsCorrectlyOrdered(pages []int, rules map[int]util.Set[int]) bool {
 
 		seen.Add(page)
 	}
-	
+
 	return true
 }

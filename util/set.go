@@ -1,6 +1,5 @@
 package util
 
-
 type Set[T comparable] map[T]bool
 
 func SetOf[T comparable](elems ...T) Set[T] {

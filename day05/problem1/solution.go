@@ -8,7 +8,7 @@ import (
 
 func calculateMiddleOfCorrectlyOrderedUpdates(rules map[int]util.Set[int], updates [][]int) int {
 	sum := 0
-	
+
 	for _, update := range updates {
 		if day05.IsCorrectlyOrdered(update, rules) {
 			sum += day05.FindMiddle(update)
@@ -21,10 +21,10 @@ func calculateMiddleOfCorrectlyOrderedUpdates(rules map[int]util.Set[int], updat
 type Day5Solution1 struct{}
 
 func (Day5Solution1) Solve(path string) {
- 	file := util.ReadFile(path)
+	file := util.ReadFile(path)
 	rules, updates := day05.ParseInput(file)
 
 	sum := calculateMiddleOfCorrectlyOrderedUpdates(rules, updates)
-	
+
 	fmt.Println(sum)
 }

@@ -27,7 +27,7 @@ func calculateMiddleOfIncorrectlyOrderedUpdate(rules map[int]util.Set[int], upda
 	return day05.FindMiddle(update)
 }
 
-type Day5Solution2 struct {}
+type Day5Solution2 struct{}
 
 func (Day5Solution2) Solve(path string) {
 	file := util.ReadFile(path)
