@@ -8,11 +8,11 @@ func Abs(num int) int {
 	return num
 }
 
-func Sum(s []int) int {
-	sum := 0
+func SumList(s []int) uint64 {
+	var sum uint64 = 0
 
 	for _, e := range s {
-		sum += e
+		sum += uint64(e)
 	}
 
 	return sum

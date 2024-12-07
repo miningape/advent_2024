@@ -1,9 +1,11 @@
-package day7_problem1
+package day7_problem2
 
 import (
 	"advent2024/day07"
 	"advent2024/util"
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func testAllPossibilitesUntil(expected int, parts []int) bool {
@@ -18,10 +20,22 @@ func testAllPossibilitesUntil(expected int, parts []int) bool {
 
 	current := parts[0]
 	if next := expected / current;
-		 expected == next * current && testAllPossibilitesUntil(next, parts[1:]) {
+		expected == next * current && testAllPossibilitesUntil(next, parts[1:]) {
 		return true
 	}
-	
+
+	if next, found := strings.CutSuffix(strconv.Itoa(expected), strconv.Itoa(current)); 
+		 found && len(next) != 0 {
+		n, err := strconv.Atoi(next)
+		if err != nil {
+			panic(err)
+		}
+		
+		if testAllPossibilitesUntil(n, parts[1:]) {
+			return true
+		}
+	}
+
 	return testAllPossibilitesUntil(expected - current, parts[1:])
 }
 
@@ -37,9 +51,9 @@ func findPossiblyCorrectCalibrations(calibrations []day07.Calibration) []int {
 	return correct_calibrations
 }
 
-type Day7Solution1 struct {}
+type Day7Solution2 struct {}
 
-func (Day7Solution1) Solve(path string) {
+func (Day7Solution2) Solve(path string) {
 	file := util.ReadFile(path)
 	calibrations := day07.ParseInput(file)
 

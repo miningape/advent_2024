@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"maps"
 	"strings"
+	"time"
 )
 
 type moment struct {
@@ -109,6 +110,7 @@ func writeOutput(lines []string, obstacles util.Set[util.Vector]) {
 type Day5Solution2 struct{}
 
 func (Day5Solution2) Solve(path string) {
+	start := time.Now()
 	file := util.ReadFile(path)
 	lines := strings.Split(file, "\n")
 
@@ -116,6 +118,6 @@ func (Day5Solution2) Solve(path string) {
 	obstacles := walkUntilLeaves(lines, position, direction)
 
 	fmt.Println(len(obstacles))
-
-	// writeOutput(lines, obstacles)
+	elapsed := time.Since(start)
+	fmt.Println("Took:", elapsed)
 }
