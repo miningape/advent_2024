@@ -7,3 +7,24 @@ func Abs(num int) int {
 
 	return num
 }
+
+func Sum(s []int) int {
+	sum := 0
+
+	for _, e := range s {
+		sum += e
+	}
+
+	return sum
+}
+
+func Reverse(s []int) []int {
+	size := len(s)
+	opposite := make([]int, size)
+
+	for i, e := range s {
+		opposite[size - 1 - i] = e
+	}
+
+	return opposite
+}
