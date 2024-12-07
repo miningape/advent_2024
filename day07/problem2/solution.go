@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func testAllPossibilitesUntil(expected int, parts []int) bool {
+func canListResultInTotal(expected int, parts []int) bool {
 	if expected < 0 {
 		// We cant subtract or divide a negative number by a positive one and result in a positive number - we can short circuit our search here
 		return false
@@ -20,7 +20,7 @@ func testAllPossibilitesUntil(expected int, parts []int) bool {
 
 	current := parts[0]
 	if next := expected / current;
-		expected == next * current && testAllPossibilitesUntil(next, parts[1:]) {
+		expected == next * current && canListResultInTotal(next, parts[1:]) {
 		return true
 	}
 
@@ -31,19 +31,19 @@ func testAllPossibilitesUntil(expected int, parts []int) bool {
 			panic(err)
 		}
 		
-		if testAllPossibilitesUntil(n, parts[1:]) {
+		if canListResultInTotal(n, parts[1:]) {
 			return true
 		}
 	}
 
-	return testAllPossibilitesUntil(expected - current, parts[1:])
+	return canListResultInTotal(expected - current, parts[1:])
 }
 
 func findPossiblyCorrectCalibrations(calibrations []day07.Calibration) []int {
 	correct_calibrations := make([]int, 0)
 
 	for _, calibration := range calibrations {
-		if testAllPossibilitesUntil(calibration.Total, util.Reverse(calibration.Parts)) {
+		if canListResultInTotal(calibration.Total, util.Reverse(calibration.Parts)) {
 			correct_calibrations = append(correct_calibrations, calibration.Total)
 		}
 	}
