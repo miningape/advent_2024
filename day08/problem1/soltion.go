@@ -14,18 +14,15 @@ func findAntiNodes(lines []string, antennas map[rune][]util.Vector) util.Set[uti
 		for i, source := range antennas {
 			for j := i + 1; j < len(antennas); j++ {
 				other := antennas[j]
-				if i == j {
-					continue
-				}
-
 				direction := other.Sub(source)
+				
 				first := source.Add(direction.Mul(2))
 				if day08.IsInside(lines, first) {
 					antiNodes.Add(first)
 				}
 
 				second := source.Sub(direction)
-				if day08.IsInside(lines, first) {
+				if day08.IsInside(lines, second) {
 					antiNodes.Add(second)
 				}
 			}
