@@ -82,6 +82,10 @@ func findPrimeFactors(num int) counter {
 
 func findSmallestVectorAlong(direction util.Vector) util.Vector {
 	if direction.X == 0 {
+		if direction.Y == 0 {
+			panic("Cannot find direction in vector with 0, 0")
+		}
+
 		return util.Vector{
 			X: 0,
 			Y: 1,
