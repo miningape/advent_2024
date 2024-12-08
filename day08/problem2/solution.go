@@ -105,18 +105,9 @@ func findSmallestVectorAlong(direction util.Vector) util.Vector {
 		}
 	}
 
-	product_x := primes_x.product()
-	product_y := primes_y.product()
-	if product_x == 0 && product_y == 0 {
-		return util.Vector{
-			X: 1,
-			Y: 1,
-		}
-	}
-
 	return util.Vector{
-		X: product_x,
-		Y: product_y,
+		X: primes_x.product(),
+		Y: primes_y.product(),
 	}
 }
 
