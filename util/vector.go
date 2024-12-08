@@ -35,3 +35,10 @@ func (left Vector) Sub(right Vector) Vector {
 		Y: left.Y - right.Y,
 	}
 }
+
+func (left Vector) Mul(right int) Vector {
+	return Vector{
+		X: left.X * right,
+		Y: left.Y * right,
+	}
+}
