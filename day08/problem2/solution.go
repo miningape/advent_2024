@@ -80,6 +80,9 @@ func findPrimeFactors(num int) counter {
 	return factors
 }
 
+/*
+	Turns out the input doesn't allow for any antinodes between each antenna - this code accounts for that :P 
+*/
 func findSmallestVectorAlong(direction util.Vector) util.Vector {
 	if direction.X == 0 {
 		if direction.Y == 0 {
@@ -167,6 +170,6 @@ func (Day8Solution2) Solve(path string) {
 	antennas := day08.FindAntennas(lines)
 	antiNodes := findAntiNodes(lines, antennas)
 
-	printMap(lines, antiNodes)
+	// printMap(lines, antiNodes)
 	fmt.Println("Answer:", len(antiNodes))
 }
