@@ -84,8 +84,8 @@ func main() {
 			"2": day9_problem2.Day9Solution2{},
 		},
 		"10": {
-			"1": day10_problem1.Day10Problem1{},
-			"2": day10_problem2.Day10Problem2{},
+			"1": day10_problem1.Day10Solution1{},
+			"2": day10_problem2.Day10Solution2{},
 		},
 	}
 

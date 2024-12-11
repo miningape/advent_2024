@@ -70,9 +70,9 @@ func trailheadRating(topography map[util.Vector]int, childrenOf map[util.Vector]
 	return rating
 }
 
-type Day10Problem2 struct {}
+type Day10Solution2 struct {}
 
-func (Day10Problem2) Solve(path string) {
+func (Day10Solution2) Solve(path string) {
 	file := util.ReadFile(path)
 	topography, trailheads := day10.ParseTopography(file)
 

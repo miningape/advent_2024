@@ -48,9 +48,9 @@ func findTrailheadScore(topography map[util.Vector]int, trailHead util.Vector) i
 	return score
 }
 
-type Day10Problem1 struct {}
+type Day10Solution1 struct {}
 
-func (Day10Problem1) Solve(path string) {
+func (Day10Solution1) Solve(path string) {
 	file := util.ReadFile(path)
 	topography, trailheads := day10.ParseTopography(file)
 
