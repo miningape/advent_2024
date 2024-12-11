@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ParseTopograph(file string) (map[util.Vector]int, []util.Vector) {
+func ParseTopography(file string) (map[util.Vector]int, []util.Vector) {
 	topograph := make(map[util.Vector]int)
 	trailheads := make([]util.Vector, 0)
 	lines := strings.Split(file, "\n")

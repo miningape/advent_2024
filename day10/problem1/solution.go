@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func findTrailheadScore(topograph map[util.Vector]int, trailHead util.Vector) int {
+func findTrailheadScore(topography map[util.Vector]int, trailHead util.Vector) int {
 	score := 0
 	dirs := day10.AdjacentDirections()
 	stack := util.StackOf(trailHead)
@@ -22,7 +22,7 @@ func findTrailheadScore(topograph map[util.Vector]int, trailHead util.Vector) in
 
 		discovered.Add(position)
 
-		height, found := topograph[position]
+		height, found := topography[position]
 		if !found {
 			continue
 		}
@@ -33,7 +33,7 @@ func findTrailheadScore(topograph map[util.Vector]int, trailHead util.Vector) in
 
 		for _, dir := range dirs {
 			n := position.Add(dir)
-			next, found := topograph[n]
+			next, found := topography[n]
 			
 			if !found {
 				continue
@@ -52,11 +52,11 @@ type Day10Problem1 struct {}
 
 func (Day10Problem1) Solve(path string) {
 	file := util.ReadFile(path)
-	topograph, trailheads := day10.ParseTopograph(file)
+	topography, trailheads := day10.ParseTopography(file)
 
 	sum := 0
 	for _, trailhead := range trailheads {
-		sum += findTrailheadScore(topograph, trailhead)
+		sum += findTrailheadScore(topography, trailhead)
 	}
 
 	fmt.Println(sum)
