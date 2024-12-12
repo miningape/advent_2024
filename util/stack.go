@@ -12,8 +12,8 @@ func StackOf[T any](elems... T) Stack[T] {
 	return stack
 }
 
-func (stack Stack[T]) Push(elem T) Stack[T] {
-	return append(stack, elem)
+func (stack Stack[T]) Push(elem... T) Stack[T] {
+	return append(stack, elem...)
 }
 
 func (stack Stack[T]) Pop() (T, Stack[T]) {
