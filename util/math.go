@@ -8,6 +8,22 @@ func Abs(num int) int {
 	return num
 }
 
+func Max(left int, right int) int {
+	if left > right {
+		return left
+	}
+
+	return right
+}
+
+func Min(left int, right int) int {
+	if left > right {
+		return right
+	}
+
+	return left
+}
+
 func SumList(s []int) uint64 {
 	var sum uint64 = 0
 
