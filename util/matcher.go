@@ -41,6 +41,14 @@ func (t *Matcher) Scan_int() (int, bool) {
 	s := ""
 	c := t.GetCurrent()
 
+	if c == '-' {
+		s = "-"
+		t.Advance()
+		if !t.IsAtEnd() {
+			c = t.GetCurrent()
+		}
+	}
+
 	for unicode.IsDigit(c) && !t.IsAtEnd() {
 		s += string(c)
 
