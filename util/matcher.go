@@ -25,6 +25,30 @@ func (t *Matcher) Advance() rune {
 	return c
 }
 
+func (m *Matcher) Next() (rune, bool) {
+	if m.IsAtEnd() {
+		return '\r', false
+	}
+
+	c := m.Advance()
+	return c, true
+}
+
+func (m *Matcher) Consume(r rune) bool {
+	if m.IsAtEnd() {
+		return false
+	}
+
+	c := m.GetCurrent()
+
+	if r == c {
+		m.Advance()
+		return true
+	}
+
+	return false
+}
+
 func (t *Matcher) Scan(s string) bool {
 	for _, r := range s {
 		c := t.Advance()
