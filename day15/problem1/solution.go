@@ -66,30 +66,12 @@ func findAllBoxes(grid *util.Grid[day15.Cell]) []util.Vector {
 	return boxes
 }
 
-func toString(grid util.Grid[day15.Cell], robot util.Vector) string {
-	g := ""
-
-	for y, line := range grid {
-		for x, c := range line {
-			if x == robot.X && y == robot.Y {
-				g += "@"
-			} else {
-				g += c.ToString()
-			}
-		}
-
-		g += "\n"
-	}
-
-	return g
-}
-
 type Day15Solution1 struct {}
 
 func (Day15Solution1) Solve(path string) {
 	file := util.ReadFile(path)
-
 	robot, warehouse, instructions := day15.ParseInput(file)
+
 	for _, instruction := range instructions {
 		move(instruction, &robot, &warehouse)
 	}

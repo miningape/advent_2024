@@ -1,5 +1,7 @@
 package util
 
+import "slices"
+
 type GridV[T any] map[Vector]T
 
 func GridOfRaw(m []string) GridV[rune] {
@@ -57,4 +59,14 @@ func (grid Grid[T]) Set(location Vector, value T) bool  {
 
 	grid[location.Y][location.X] = value
 	return true
+}
+
+func (grid *Grid[T]) DeepClone() Grid[T] {
+	copy := make(Grid[T], 0, len(*grid))
+
+	for _, line := range *grid {
+		copy = append(copy, slices.Clone(line))
+	}
+
+	return copy
 }

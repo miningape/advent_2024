@@ -97,3 +97,21 @@ func ParseInput(file string) (util.Vector, util.Grid[Cell], []util.Vector) {
 
 	return robot, warehouse, instructions
 }
+
+func ToString(grid util.Grid[Cell], robot util.Vector) string {
+	g := ""
+
+	for y, line := range grid {
+		for x, c := range line {
+			if x == robot.X && y == robot.Y {
+				g += "@"
+			} else {
+				g += c.ToString()
+			}
+		}
+
+		g += "\n"
+	}
+
+	return g
+}
