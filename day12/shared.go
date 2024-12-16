@@ -12,7 +12,7 @@ type CropPlot struct {
 	Area int
 }
 
-func exploreFromCropLocation(grid util.Grid[rune], location CropLocation, explored util.Set[util.Vector]) CropPlot {
+func exploreFromCropLocation(grid util.GridV[rune], location CropLocation, explored util.Set[util.Vector]) CropPlot {
 	cardinals := util.Cardinals()
 	stack := util.StackOf(location.Position)
 	plot := CropPlot{
@@ -50,7 +50,7 @@ func exploreFromCropLocation(grid util.Grid[rune], location CropLocation, explor
 	return plot
 }
 
-func FindAllPlots(grid util.Grid[rune]) map[CropLocation]CropPlot {
+func FindAllPlots(grid util.GridV[rune]) map[CropLocation]CropPlot {
 	explored := util.SetOf[util.Vector]()
 	plots := make(map[CropLocation]CropPlot)
 
