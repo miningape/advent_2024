@@ -58,21 +58,32 @@ func (left Vector) VectorMul(right Vector) Vector {
 	}
 }
 
+var (
+	NORTH = Vector{ 0, -1 }
+	EAST = Vector{ 1, 0 }
+	SOUTH = Vector{ 0, 1 }
+	WEST = Vector{ -1, 0 }
+	NORTH_EAST = NORTH.Add(EAST)
+	NORTH_WEST = NORTH.Add(WEST)
+	SOUTH_EAST = SOUTH.Add(EAST)
+	SOUTH_WEST = SOUTH.Add(WEST)
+)
+
 func Cardinals() []Vector {
 	return []Vector{
-		{ 1, 0 },
-		{ 0, -1 },
-		{ -1, 0 },
-		{ 0, 1 },
+		EAST,
+		NORTH,
+		WEST,
+		SOUTH,
 	}
 }
 
 func Diagonals() []Vector {
 	return []Vector{
-		{ 1, 1 },
-		{ 1, -1 },
-		{ -1, -1 },
-		{ -1, 1 },
+		SOUTH_EAST,
+		NORTH_EAST,
+		NORTH_WEST,
+		SOUTH_WEST,
 	}
 }
 

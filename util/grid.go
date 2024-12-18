@@ -1,6 +1,10 @@
 package util
 
-import "slices"
+import (
+	"errors"
+	"fmt"
+	"slices"
+)
 
 type GridV[T any] map[Vector]T
 
@@ -30,6 +34,30 @@ func GridOfString[T any](m []string, ma func(rune, Vector) T) Grid[T] {
 		}
 
 	return grid
+}
+
+func GridToString[T comparable](grid Grid[T], mapping map[T]string, positional map[Vector]string) (string, error) {
+	g := ""
+
+	for y, line := range grid {
+		for x, cell := range line {
+			representation, found := mapping[cell]
+			if !found {
+				return "", errors.New(fmt.Sprint("No mapping provided for \"", cell, "\" provided: ", mapping))
+			}
+
+			positionalRepresentation, found := positional[Vector{x, y}]
+			if !found {
+				g += representation
+			} else {
+				g += positionalRepresentation
+			}
+		}
+
+		g += "\n"
+	}
+
+	return g, nil
 }
 
 func (grid Grid[T]) At(location Vector) (T, bool)  {
