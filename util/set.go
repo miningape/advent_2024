@@ -62,3 +62,13 @@ func (left Set[T]) Union(right Set[T]) Set[T] {
 
 	return new
 }
+
+func (s Set[T]) Slice() []T {
+	sl := make([]T, 0, len(s))
+
+	for elem := range s {
+		sl = append(sl, elem)
+	}
+
+	return sl
+}
