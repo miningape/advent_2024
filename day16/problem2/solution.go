@@ -97,7 +97,7 @@ type CostSet struct{
 	cost int
 }
 
-func findAllPossiblePathsWithScore(start, end, direction util.Vector, maze util.Grid[bool]) map[util.Vector]map[util.Vector]CostSet {
+func findAllPossiblePathsWithScore(start, direction util.Vector, maze util.Grid[bool]) map[util.Vector]map[util.Vector]CostSet {
 	cache := make(map[util.Vector]map[util.Vector]CostSet)
 
 	cache[start] = make(map[util.Vector]CostSet)
@@ -170,7 +170,7 @@ func (Day16Solution2) Solve(path string) {
 	file := util.ReadFile(path)
 
 	maze, start, end := ParseInput(file)
-	paths := findAllPossiblePathsWithScore(start, end, util.EAST, maze)
+	paths := findAllPossiblePathsWithScore(start, util.EAST, maze)
 	score := findShortestPathCost(paths, end)
 	cells := cellsAlongShortestPaths(paths, end, score)
 
