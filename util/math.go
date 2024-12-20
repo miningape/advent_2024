@@ -44,3 +44,13 @@ func Reverse(s []int) []int {
 
 	return opposite
 }
+
+func Pow(base int, exponent int) int {
+	pow := 1
+
+	for i := 0; i < exponent; i++ {
+		pow *= base
+	}
+
+	return pow
+}
