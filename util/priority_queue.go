@@ -2,12 +2,12 @@ package util
 
 import "container/heap"
 
-type prioritisedElement[T any] struct {
+type PrioritisedElement[T any] struct {
 	priority int
 	element T
 }
 
-type PriorityQueue[T any] []prioritisedElement[T]
+type PriorityQueue[T any] []PrioritisedElement[T]
 
 func (pq PriorityQueue[T]) Len() int { return len(pq) }
 
@@ -20,7 +20,7 @@ func (pq PriorityQueue[T]) Swap(i, j int) {
 }
 
 func (pq *PriorityQueue[T]) Push(x any) {
-	item := x.(prioritisedElement[T])
+	item := x.(PrioritisedElement[T])
 	*pq = append(*pq, item)
 }
 
@@ -37,12 +37,12 @@ func (pq PriorityQueue[T]) IsEmpty() bool {
 }
 
 func (pq *PriorityQueue[T]) Insert(element T, priority int) {
-	heap.Push(pq, prioritisedElement[T]{priority, element})
+	heap.Push(pq, PrioritisedElement[T]{priority, element})
 }
 
 func (pq *PriorityQueue[T]) PullPriority() (T, int) {
 	item := heap.Pop(pq)
-	entry := item.(prioritisedElement[T])
+	entry := item.(PrioritisedElement[T])
 	return entry.element, entry.priority
 }
 
