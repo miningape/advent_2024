@@ -116,7 +116,6 @@ func (grid *Grid[T]) DeepClone() Grid[T] {
 func (grid *Grid[T]) ShortestPath(from, to Vector, neighbors func(Vector) map[Vector]int) ([]Vector, bool) {
 	pq := PriorityQueueOf(from, 0)
 	parent := make(map[Vector]Vector)
-	// parent[from] = Vector{ -1, -1 }
 
 	for !pq.IsEmpty() {
 		location, cost := pq.PullPriority()
