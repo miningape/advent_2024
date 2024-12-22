@@ -36,6 +36,7 @@ import (
 	day17_problem1 "advent2024/day17/problem1"
 	day17_problem2 "advent2024/day17/problem2"
 	day18_problem1 "advent2024/day18/problem1"
+	day18_problem2 "advent2024/day18/problem2"
 	"advent2024/util"
 	"os"
 )
@@ -132,6 +133,7 @@ func main() {
 		},
 		"18": {
 			"1": day18_problem1.Day18Solution1{},
+			"2": day18_problem2.Day18Solution2{},
 		},
 	}
 
