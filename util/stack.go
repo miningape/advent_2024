@@ -21,7 +21,7 @@ func (stack Stack[T]) Pop() (T, Stack[T]) {
 		panic("Popped empty stack")
 	}
 
-	return stack[0], stack[1:]
+	return stack[len(stack) - 1], stack[0:len(stack) - 1]
 }
 
 func (stack Stack[T]) IsEmpty() bool {
