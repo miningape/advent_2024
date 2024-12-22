@@ -9,18 +9,30 @@ func FindSubStrings(str string, substr string) []int {
 			i++
 			j++
 
-			if j >= len(substr) {
-				found = append(found, i - len(substr))
+			if j == len(substr) {
+				found = append(found, i - j)
+				i -= j - 1
 				j = 0
 			}
 		} else {
 			if j > 0 {
+				i -= j - 1
 				j = 0
 			} else {
 				i++
 			}
 		}
 	}
-	
+
 	return found
+}
+
+func ReverseString(str string) string {
+	reversed := ""
+
+	for i := len(str) - 1; i >= 0; i-- {
+		reversed += string(str[i])
+	}
+
+	return reversed
 }
