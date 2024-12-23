@@ -145,3 +145,22 @@ func (grid *Grid[T]) ShortestPath(from, to Vector, neighbors func(Vector) map[Ve
 	_, found = parent[to]
 	return path, found
 }
+
+func (grid *Grid[T]) ShortestPathsFrom(from Vector, neighbors func(Vector) map[Vector]int) (map[Vector]Vector) {
+	pq := PriorityQueueOf(from, 0)
+	parent := make(map[Vector]Vector)
+
+	for !pq.IsEmpty() {
+		location, cost := pq.PullPriority()
+
+		for neighbor, neighborCost := range neighbors(location) {
+			_, found := parent[neighbor]
+			if found || neighbor == from { continue }
+
+			pq.Insert(neighbor, cost + neighborCost)
+			parent[neighbor] = location
+		}
+	}
+
+	return parent
+}

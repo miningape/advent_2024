@@ -95,3 +95,32 @@ func Units() []Vector {
 
 	return units
 }
+
+func ManhattanCircle(radius int) Set[Vector] {
+	points := SetOf[Vector]()
+
+	for x := 0; x < radius; x++ {
+		y := radius - x
+
+		point := Vector{x, y}
+		for i := 0; i <= 4; i++ {
+			point = point.RotateOrigin90()
+			points.Add(point)
+		}
+
+
+		for j := y; j > 0; j-- {
+			point := Vector{x, j}
+			for i := 0; i <= 4; i++ {
+				point = point.RotateOrigin90()
+				points.Add(point)
+			}
+		}
+	}
+
+	for _, point := range Cardinals() {
+		points.Remove(point)
+	}
+
+	return points
+}
