@@ -98,10 +98,9 @@ func (Day20Solution2) Solve(path string) {
 	total := 0
 	for to, f := range teleports {
 		for _, from := range f {
-			x := from.Sub(to)
-			distance := util.Abs(x.Y) + util.Abs(x.X)
-
+			distance := from.Sub(to).ManhattanOrigin()
 			saved := len(track) - pathLengthWithTeleport(parentOf, end, from, to) - distance
+
 			if saved >= 100 {
 				total++
 			}
