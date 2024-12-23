@@ -29,13 +29,13 @@ func useableTeleports(grid util.Grid[bool], track []util.Vector, pathOrder map[u
 	for _, to := range track {
 		for offset := range circle {
 			from := to.Add(offset)
+			if pathOrder[to] < pathOrder[from] {
+				continue
+			}
+
 			isWall, found := grid.At(from)
 
 			if found && !isWall {
-				if pathOrder[to] < pathOrder[from] {
-					continue
-				}
-
 				if _, found := teleportsFrom[to]; !found {
 					teleportsFrom[to] = make([]util.Vector, 0)
 				}
