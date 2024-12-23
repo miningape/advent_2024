@@ -64,24 +64,8 @@ func shortestPaths(maze util.Grid[bool], from util.Vector) map[util.Vector]util.
 	})
 }
 
-func getParentOf(parentOf map[util.Vector]util.Vector, end, teleportFrom, teleportTo util.Vector) (util.Vector, bool) {
-	if end == teleportFrom {
-		return teleportTo, true
-	}
-
-	parent, found := parentOf[end]
-	return parent, found
-}
-
-func pathLengthWithTeleport(parentOf map[util.Vector]util.Vector, end, teleportFrom, teleportTo util.Vector) int {
-	parent, found := getParentOf(parentOf, end, teleportFrom, teleportTo)
-	steps := 0
-	for found {
-		steps++
-		parent, found = getParentOf(parentOf, parent, teleportFrom, teleportTo)
-	}
-
-	return steps
+func changeInPathLengthWithTeleport(pathOrder map[util.Vector]int, teleportFrom, teleportTo util.Vector) int {
+	return (pathOrder[teleportFrom] - pathOrder[teleportTo]) + teleportFrom.Sub(teleportTo).ManhattanOrigin()
 }
 
 type Day20Solution2 struct {}
@@ -98,10 +82,9 @@ func (Day20Solution2) Solve(path string) {
 	total := 0
 	for to, f := range teleports {
 		for _, from := range f {
-			distance := from.Sub(to).ManhattanOrigin()
-			saved := len(track) - pathLengthWithTeleport(parentOf, end, from, to) - distance
+			saved := changeInPathLengthWithTeleport(pathOrder, from, to) 
 
-			if saved >= 100 {
+			if -saved >= 100 {
 				total++
 			}
 		}
